@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import MyButton from "./MyButton";
+import {PostView} from "./posts/PostView";
+import {UserView} from "./users/UserView";
+import AddUser from "./users/AddUser";
+import AddPost from "./posts/AddPost";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <MyButton to="posts">Posts</MyButton>
+        <MyButton to="users">Users</MyButton>
+
+        <Routes>
+          <Route path="/posts" element={<PostView />} />
+          <Route path="/users" element={<UserView />} />
+          <Route path="/adduser" element={<AddUser />} />
+          <Route path="/addpost" element={<AddPost />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
